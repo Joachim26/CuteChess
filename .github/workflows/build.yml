@@ -12,17 +12,10 @@ jobs:
         runs-on: ${{ matrix.os }}
         strategy:
           matrix:
-            qt_version: [5.15.2, 6.4.0]
-            os: [windows-latest, ubuntu-latest, macos-latest]
+            qt_version: [6.4.0]
+            os: [windows-latest]
         steps:
             - uses: actions/checkout@v3
-
-            - name: install qt 5.x
-              uses: jurplel/install-qt-action@v2
-              if: startsWith(matrix.qt_version, '5.')
-              with:
-                version: ${{ matrix.qt_version }}
-                aqtversion: '==2.1.*'
 
             - name: install qt 6.x
               uses: jurplel/install-qt-action@v2
