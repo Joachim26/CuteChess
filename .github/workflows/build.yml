@@ -1,10 +1,6 @@
 name: build cutechess
 on:
   workflow_dispatch:
-#  push:
-#    branches: [ master ]
-#  pull_request:
-#    branches: [ master ]
 
 jobs:
     build:
@@ -26,28 +22,6 @@ jobs:
                 aqtversion: '==2.1.*'
 
             - name: build cute chess
-              if: matrix.os != 'windows-latest'
-              run: |
-                  mkdir build
-                  cd build
-                  cmake ..
-                  cmake --build .
-
-            - name: run unit tests
-              if: matrix.os != 'windows-latest'
-              run: |
-                  cd build
-                  make test
-
-            - name: check manual pages
-              if: matrix.os == 'ubuntu-latest'
-              run: |
-                  sudo apt install mandoc
-                  cd ${GITHUB_WORKSPACE}/docs/
-                  mandoc -T lint cutechess-cli.6
-                  mandoc -T lint cutechess-engines.json.5
-
-            - name: build cute chess
               if: matrix.os == 'windows-latest'
               shell: cmd
               run: |
@@ -56,11 +30,9 @@ jobs:
                   cd build
                   cmake ..
                   cmake --build . --config release
+                                    
+            - uses: actions/upload-artifact@v3
+              with:
+                name: CuteChessMyRelease
+                path: D:\a\CuteChess\CuteChess\build\
 
-            - name: run unit tests
-              if: matrix.os == 'windows-latest'
-              shell: cmd
-              run: |
-                  call "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
-                  cd build
-                  ctest -C release
