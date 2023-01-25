@@ -13,12 +13,11 @@ jobs:
         steps:
             - uses: actions/checkout@v3
 
-            - name: install qt 6.x
+            - name: install qt 5.x
               uses: jurplel/install-qt-action@v3
-              if: startsWith(matrix.qt_version, '6.')
+              if: startsWith(matrix.qt_version, '5.')
               with:
                 version: ${{ matrix.qt_version }}
-                modules: 'qt5compat'
                 aqtversion: '==2.1.*'
 
             - name: build cute chess
