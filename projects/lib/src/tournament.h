@@ -610,7 +610,7 @@ class LIB_EXPORT Tournament : public QObject
 
 		const QMap<QString, QString> m_namedFormats =
 		{
-			{"minimal",	"Rank,Name"},
+			{"minimal",	"Rank,Name,TC,Elo"},
 			{"small",	"Rank,Name,Games,Points"},
 			{"short",	"Rank,Name,Elo,Games"},
 			{"concise",	"Rank,Name,Elo,Error,Games"},
