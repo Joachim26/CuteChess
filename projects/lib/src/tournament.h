@@ -75,7 +75,7 @@ class LIB_EXPORT Tournament : public QObject
 			InvalidResultClaim
 		};
 		constexpr static auto c_defaultFormat 
-			= "Rank,Name,Elo,Error,Games,Score,DScore";
+			= "Rank,Name,Elo,Error,Games,Score,DScore,TC";
 
 		/*!
 		 * Creates a new tournament that uses \a gameManager
