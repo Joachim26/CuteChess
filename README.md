@@ -1,7 +1,7 @@
 # Cute Chess
 
 ![GitHub CI](https://github.com/cutechess/cutechess/workflows/build%20cutechess/badge.svg)
-
+ 
 Cute Chess is a graphical user interface, command-line interface and a library
 for playing chess. Cute Chess is written in C++ using the [Qt
 framework](https://www.qt.io/).

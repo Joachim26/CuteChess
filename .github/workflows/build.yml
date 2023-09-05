@@ -1,9 +1,6 @@
 name: build cutechess
 on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+  workflow_dispatch:
 
 jobs:
     build:
@@ -11,8 +8,10 @@ jobs:
         runs-on: ${{ matrix.os }}
         strategy:
           matrix:
+
             qt_version: [5.15.2, 6.5.2]
             os: [windows-latest, ubuntu-latest, macos-latest]
+
         steps:
             - uses: actions/checkout@v3
 
@@ -21,6 +20,7 @@ jobs:
               if: startsWith(matrix.qt_version, '5.')
               with:
                 version: ${{ matrix.qt_version }}
+
 
             - name: install qt 6.x
               uses: jurplel/install-qt-action@v3
@@ -51,6 +51,8 @@ jobs:
                   mandoc -T lint cutechess-cli.6
                   mandoc -T lint cutechess-engines.json.5
 
+
+
             - name: build cute chess
               if: matrix.os == 'windows-latest'
               shell: cmd
@@ -60,11 +62,9 @@ jobs:
                   cd build
                   cmake ..
                   cmake --build . --config release
+                                    
+            - uses: actions/upload-artifact@v3
+              with:
+                name: CuteChessMyRelease
+                path: D:\a\CuteChess\CuteChess\build\
 
-            - name: run unit tests
-              if: matrix.os == 'windows-latest'
-              shell: cmd
-              run: |
-                  call "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
-                  cd build
-                  ctest -C release

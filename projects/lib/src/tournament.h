@@ -75,7 +75,7 @@ class LIB_EXPORT Tournament : public QObject
 			InvalidResultClaim
 		};
 		constexpr static auto c_defaultFormat 
-			= "Rank,Name,Elo,Error,Games,Score,DScore";
+			= "Rank,Name,Elo,Error,Games,Points,Score,DScore,TC";
 
 		/*!
 		 * Creates a new tournament that uses \a gameManager
@@ -611,12 +611,12 @@ class LIB_EXPORT Tournament : public QObject
 		const QMap<QString, QString> m_namedFormats =
 		{
 			{"minimal",	"Rank,Name"},
-			{"small",	"Rank,Name,Games,Points"},
-			{"short",	"Rank,Name,Elo,Games"},
-			{"concise",	"Rank,Name,Elo,Error,Games"},
+			{"small",	"Rank,Name,Elo,Games,Points,TC"},
+			{"short",	"Rank,Name,Elo,Games,TC"},
+			{"concise",	"Rank,Name,Elo,Error,Games,TC"},
 			{"default",	QString(c_defaultFormat)},
-			{"with-points",	"Rank,Name,Elo,Error,Games,Points,Score,DScore"},
-			{"wide",	"Rank,Name,Elo,Error,Games,W,L,D,Points,Score,DScore"},
+			{"with-points",	"Rank,Name,Elo,Error,Games,Points,Score,DScore,TC"},
+			{"wide",	"Rank,Name,Elo,Error,Games,W,L,D,Points,Score,DScore,TC"},
 			{"wide2",	"Rank,Name,Elo,Error,Games,W,L,D,Points,"
 					"Score,DScore,wScore,bScore"},
 			{"per-color",	"Rank,Name,Elo,Error,Games,W,L,D,Points,"
