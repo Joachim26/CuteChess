@@ -56,6 +56,7 @@ Source: "{#QtLibPath}\bin\Qt5PrintSupport.dll"; DestDir: "{app}"; Flags: ignorev
 Source: "{#QtLibPath}\bin\Qt5Widgets.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#QtLibPath}\bin\Qt5Concurrent.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#QtLibPath}\plugins\platforms\qwindows.dll"; DestDir: "{app}\platforms"; Flags: ignoreversion
+Source: "{#QtLibPath}\plugins\styles\qwindowsvistastyle.dll"; DestDir: "{app}\styles"; Flags: ignoreversion
 Source: "{#CuteChessPath}\COPYING"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#CuteChessPath}\docs\cutechess-cli.6.txt"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#CuteChessPath}\docs\cutechess-cli.6.html"; DestDir: "{app}"; Flags: ignoreversion
@@ -68,6 +69,6 @@ Name: "{autoprograms}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"
 Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\vcredist_x64.exe"; Parameters: "/install /quiet /norestart"; StatusMsg: Installing Microsoft C and C++ (MSVC) runtime libraries...
+Filename: "{app}\vc_redist.x64.exe"; Parameters: "/install /quiet /norestart"; StatusMsg: Installing Microsoft C and C++ (MSVC) runtime libraries...
 Filename: "{app}\{#MyAppExeName}"; Description: "{cm:LaunchProgram,{#StringChange(MyAppName, '&', '&&')}}"; Flags: nowait postinstall skipifsilent
 
